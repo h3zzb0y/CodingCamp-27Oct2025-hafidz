@@ -4,31 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo List</title>
+
+  <!-- css -->
   <link rel="stylesheet" href="./css/style.css">
+
 </head>
+
 <body>
   <main id="app">
     <div id="card">
       <h1 id="title">To-Do List</h1>
 
+      <!-- Inputan -->
       <div id="formRow">
         <input id="todoInput" type="text" placeholder="Add a to-do...">
         <input id="dateInput" type="date">
-        <button id="addBtn">Add</button>
+        <button id="addBtn">+</button>
       </div>
 
+      <!-- Actions -->
       <div id="controls">
         <button id="filterBtn">Filter</button>
         <button id="deleteAllBtn">Delete All</button>
       </div>
 
+      <!-- Tabel List -->
       <table id="todoTable">
         <thead>
           <tr>
             <th>Task</th>
             <th>Due Date</th>
             <th>Status</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody id="todoBody">
@@ -37,6 +44,11 @@
       </table>
     </div>
   </main>
+
+  <footer id="footer">@To-Do List Hafidz</footer>
+
+  <!-- js -->
   <script src="./js/script.js"></script>
+
 </body>
 </html>
