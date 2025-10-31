@@ -6,40 +6,42 @@
   <title>Todo List</title>
 
   <!-- css -->
+   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./css/style.css">
 
 </head>
 
 <body>
-  <main id="app">
-    <div id="card">
-      <h1 id="title">To-Do List</h1>
+  <!-- Judul  -->
+  <main class="bg-sky-800 flex items-center justify-center min-h-screen" id="app">
+    <div class="bg-slate-800 p-6 rounded-2xl w-[600px] shadow-lg" id="card">
+      <h1 class="text-center text-2xl font-bold text-white mb-4" id="title">To-Do List</h1>
 
       <!-- Inputan -->
-      <div id="formRow">
-        <input id="todoInput" type="text" placeholder="Add a to-do...">
-        <input id="dateInput" type="date">
-        <button id="addBtn">+</button>
+      <div class="flex gap-2 mb-3" id="formRow">
+        <input class="flex-1 px-3 py-2 rounded-lg bg-slate-700 text-white focus:outline-none" id="todoInput" type="text" placeholder="Add a to-do...">
+        <input class="px3 py-2 rounded-lg bg-slate-700 text-white" id="dateInput" type="date">
+        <button class="bg-green-500 hover:bg-green-500 px-4 py-2 rounded-lg text-gray-900" id="addBtn">Add</button>
       </div>
 
       <!-- Actions -->
-      <div id="controls">
-        <button id="filterBtn">Filter</button>
-        <button id="deleteAllBtn">Delete All</button>
+      <div class="flex justify-between mb-3" id="controls">
+        <button class="bg-slate-700 hover:bg-red-600 px-4 py-2 rounded-lg text-white" id="filterBtn">Filter</button>
+        <button class="bg-slate-700 hover:bg-red-600 px-4 py-2 rounded-lg text-white" id="deleteAllBtn">Delete All</button>
       </div>
 
       <!-- Tabel List -->
-      <table id="todoTable">
+      <table class="w-full text-white text-sm" id="todoTable">
         <thead>
-          <tr>
-            <th>Task</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th>Actions</th>
+          <tr class="text-gray-400 border-b border-slate-700">
+            <th class="py-2 text-center">Task</th>
+            <th class="py-2 text-center">Due Date</th>
+            <th class="py-2 text-center">Status</th>
+            <th class="py-2 text-center">Actions</th>
           </tr>
         </thead>
-        <tbody id="todoBody">
-          <tr><td colspan="4">No task found</td></tr>
+        <tbody class="text-gray-300 text-center" id="todoBody">
+          <tr><td class="py-4" colspan="4">No task found</td></tr>
         </tbody>
       </table>
     </div>

@@ -5,9 +5,17 @@ const deleteAllBtn = document.getElementById('deleteAllBtn');
 const filterBtn = document.getElementById('filterBtn');
 const todoBody = document.getElementById('todoBody');
 
-let todos = JSON.parse(localStorage.getItem('todos_v1') || '[]');
 
-// Save todos to localStorage
+let todos = JSON.parse(localStorage.getItem('todos_v1') || '[]');
+let showDoneOnly = false;
+
+document.getElementById('filterBtn').addEventListener('click', () => {
+  showDoneOnly = !showDoneOnly;
+  const filtered = showDoneOnly ? todos.filter(t => t.completed) : todos;
+  renderTodos(filtered);
+});
+
+// Save todos
 function saveTodos(){ localStorage.setItem('todos_v1', JSON.stringify(todos)) }
 
 // Add a new todo
@@ -35,9 +43,9 @@ tr.innerHTML = `
 <td class="${textClass}">${escapeHtml(todo.text)}</td>
 <td class="${textClass}">${escapeHtml(todo.date)}</td>
 <td>${todo.completed ? 'Done' : 'Pending'}</td>
-<td class="row-actions">
-<button class="btn-small btn-done" data-index="${index}">Done</button>
-<button class="btn-small btn-delete" data-index="${index}">Delete</button>
+<td class="row-actions" flex justify-center gap-2>
+<button class="bg-green-500 hover:bg-green-600 text-white font-semibold px-1 py-0 rounded btn-done" data-index="${index}">Done</button>
+<button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-1 py-0 rounded btn-delete" data-index="${index}">Delete</button>
 </td>
 `;
 todoBody.appendChild(tr);
@@ -66,17 +74,9 @@ function deleteAll(){
   }
 }
 
-// Filter todos based on status
-function filterTodos(){
-  const today = new Date().toISOString().split('T')[0];
-  const filtered = todos.filter(t => t.date === today);
-  renderTodos(filtered);
-}
-
 /// Event Listeners
 addBtn.addEventListener('click', addTodo);
 deleteAllBtn.addEventListener('click', deleteAll);
-filterBtn.addEventListener('click', filterTodos);
 
 document.addEventListener('click', (e)=>{
   if(e.target.matches('.btn-delete')) deleteTodo(Number(e.target.dataset.index));
